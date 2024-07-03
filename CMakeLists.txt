@@ -25,8 +25,16 @@ mark_as_advanced(USE_CCACHE)
 find_program(CCACHE ccache)
 
 if(CCACHE AND USE_CCACHE)
-    message(NOTICE "Using ccache.")
+    message(NOTICE "Using ccache")
     set(CMAKE_CXX_COMPILER_LAUNCHER ${CCACHE})
+endif()
+
+# Testing
+if(ENABLE_TESTING)
+    enable_testing()
+    include(CTest)
+    add_subdirectory(test)
+    message(NOTICE "Building Tests")
 endif()
 
 # Compiler flags
