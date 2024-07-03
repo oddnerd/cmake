@@ -40,3 +40,20 @@ endif()
 # Static analysis
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_LINK_WHAT_YOU_USE TRUE)
+
+# CPPCheck
+option(ENABLE_CPPCHECK "Use cppcheck" OFF)
+
+if(ENABLE_CPPCHECK)
+    find_program(CPPCHECK cppcheck)
+
+    if(CPPCHECK)
+        set(CMAKE_CXX_CPPCHECK ${CPPCHECK}
+            --suppress=missingInclude
+            --enable=all
+            --inconclusive
+        )
+    else()
+        message(SEND_ERROR "Could not find cppcheck")
+    endif()
+endif()
