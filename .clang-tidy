@@ -1,0 +1,28 @@
+---
+Checks:          '*,                    # By default allow additional checks.
+                  abseil-*,
+                  android-*,
+                  boost-*,
+                  bugprone-*,
+                  cert-*,
+                  clang-analyzer-*,
+                  cppcoreguidelines-*,
+                  darwin-*,
+                  fuchsia-*,
+                  google-*,
+                  hicpp-*,
+                  linuxkernel-*,
+                  llvm-*,
+                  llvmlibc-*,
+                  misc-*,
+                  modernize-*,
+                  mpi-*,
+                  -objc-*,            # No Objective-C code in this repository.
+                  openmp-*,
+                  performance-*,
+                  portability-*,
+                  readability-*,
+                  zircon-*'
+WarningsAsErrors: '1'
+FormatStyle:      file
+...
