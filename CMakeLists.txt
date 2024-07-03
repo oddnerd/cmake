@@ -29,6 +29,14 @@ if(CCACHE AND USE_CCACHE)
     set(CMAKE_CXX_COMPILER_LAUNCHER ${CCACHE})
 endif()
 
+# Documentation
+option(BUILD_DOCUMENTATION "Build documentation." OFF)
+
+if(BUILD_DOCUMENTATION)
+    add_subdirectory(doc)
+    message(NOTICE "Building documentation.")
+endif()
+
 # Testing
 if(ENABLE_TESTING)
     enable_testing()
