@@ -36,3 +36,7 @@ if(ENABLE_IPO)
         message(SEND_ERROR "IPO is not supported: ${output}")
     endif()
 endif()
+
+# Static analysis
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_LINK_WHAT_YOU_USE TRUE)
