@@ -29,6 +29,17 @@ if(CCACHE AND USE_CCACHE)
     set(CMAKE_CXX_COMPILER_LAUNCHER ${CCACHE})
 endif()
 
+# Compiler flags
+if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+    include(compiler/clang)
+elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+    include(compiler/gcc)
+elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
+    include(compiler/msvc)
+else()
+    message(WARNING "Unknown compiler")
+endif()
+
 # Inerprocedural optimization (link time optimization)
 option(ENABLE_IPO "Iterprocedural Optimization; Link Time Optimization (LTO)" OFF)
 
