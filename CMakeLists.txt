@@ -57,3 +57,16 @@ if(ENABLE_CPPCHECK)
         message(SEND_ERROR "Could not find cppcheck")
     endif()
 endif()
+
+# Clang-Tidy
+option(ENABLE_CLANG_TIDY "Use clang-tidy" OFF)
+
+if(ENABLE_CLANG_TIDY)
+    find_program(CLANGTIDY clang-tidy)
+
+    if(CLANGTIDY)
+        set(CMAKE_CXX_CLANG_TIDY ${CLANGTIDY})
+    else()
+        message(SEND_ERROR "Could not find clang-tidy")
+    endif()
+endif()
