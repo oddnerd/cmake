@@ -7,3 +7,8 @@ project(cmake
     HOMEPAGE_URL "github.com/oddnerd/cmake"
     LANGUAGES CXX
 )
+
+# C++ standard defaults
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED OFF)
+set(CMAKE_CXX_EXTENSIONS OFF)
