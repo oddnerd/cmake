@@ -22,3 +22,17 @@ if(CCACHE AND USE_CCACHE)
     message(NOTICE "Using ccache.")
     set(CMAKE_CXX_COMPILER_LAUNCHER ${CCACHE})
 endif()
+
+# Inerprocedural optimization (link time optimization)
+option(ENABLE_IPO "Iterprocedural Optimization; Link Time Optimization (LTO)" OFF)
+
+if(ENABLE_IPO)
+    include(CheckIPOSupported)
+    check_ipo_supported(RESULT result OUTPUT output)
+
+    if(result)
+        set(CMAKE_INTERPROCEDURAL_OPTIMIZATION TRUE)
+    else()
+        message(SEND_ERROR "IPO is not supported: ${output}")
+    endif()
+endif()
